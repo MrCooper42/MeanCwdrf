@@ -3,16 +3,24 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    routingComponents,
+    PageNotFoundComponent,
+    LoginComponent
   ],
-  imports: [
-    BrowserModule
+  imports:      [
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers:    [],
+  bootstrap:    [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

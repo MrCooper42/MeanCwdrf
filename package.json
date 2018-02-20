@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./server/bin/www",
-    "build": "start ng build --watch && nodemon ",
+    "build": "start ng lint && start ng build --watch && nodemon ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
