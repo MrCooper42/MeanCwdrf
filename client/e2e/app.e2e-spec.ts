@@ -1,6 +1,6 @@
-import { AppPage } from './app.po';
+import {AppPage} from './app.po';
 
-describe('untitled App', () => {
+describe('CWDRF App', () => {
   let page: AppPage;
 
   beforeEach(() => {
