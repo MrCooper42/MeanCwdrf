@@ -2,14 +2,33 @@
 
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const hbs = require('hbs');
+const passport = require('passport');
+const jwt = requre('express-jwt');
+const mongoose = require('mongoose');
 
-const api = require('./routes/api');
+// TODO: setup mongoose conection
+mongoose.connect('mongodb://localhost/myappdatabase', options).then(
+  () => {
+    // TODO: Handle success connection through promise / config options
+  }, err => {
+    // TODO: Handle connection error
+  }
+);
+
+const api = require('./api/routes/api');
+const db = require('./api/models/db');
+const config = require('./api/config/passport');
+const auth = jwt({
+  // TODO: Save secret in properties file
+  secret: 'My_Secret',
+  userProperty: 'payload'
+});
 
 const app = express();
 
@@ -28,9 +47,10 @@ app.use(express.static(path.join(__dirname, '../dist')));
 // sanitizer
 app.use(expressSanitizer());
 
+app.use(passport.initialize());
 app.use('/api', api);
 
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
+app.use('*', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -40,14 +60,14 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.local.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({ 'message': `${err.name} : ${err.message}` });
 });
 
 module.exports = app;
