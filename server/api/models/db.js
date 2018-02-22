@@ -1,11 +1,9 @@
 'use strict';
 // Strengthen this area.
 const mongoose = require('mongoose');
-const User = require('./users.js').User;
+const User = require('./user.js').User;
 
-mongoose.connect('mongodb://localhost/');
-
-console.log('we are connected');
+console.log('we are connected in db.js WOO!');
 
 module.exports = {
   User: User

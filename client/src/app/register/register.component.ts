@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
+import { AuthenticationService, TokenPayload } from '../shared/authentication/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  credientials: TokenPayload = {
+  credentials: TokenPayload = {
     email: '',
     name: '',
     password: '',
@@ -19,7 +19,7 @@ export class RegisterComponent {
   }
 
   register = () => {
-    this.auth.register(this.credientials).subscribe(() => {
+    this.auth.register(this.credentials).subscribe(() => {
       this.router.navigateByUrl('/profile');
     }, (err) => {
       console.error(err);

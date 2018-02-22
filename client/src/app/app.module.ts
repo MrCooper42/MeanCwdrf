@@ -4,22 +4,24 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    PageNotFoundComponent,
-    LoginComponent
+    routingComponents
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

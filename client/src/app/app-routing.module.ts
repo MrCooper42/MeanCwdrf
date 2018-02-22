@@ -3,15 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuardService } from './shared/authentication/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
   {
-    path:       '',
+    path: '',
     redirectTo: '/login',
-    pathMatch:  'full'
+    pathMatch: 'full'
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuardService ] },
+  { path: 'home', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -22,9 +27,15 @@ const routes: Routes = [
       { enableTracing: true }
     )
   ],
-  exports: [RouterModule]
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }
 
-export const routingComponents = [HomeComponent, PageNotFoundComponent];
+export const routingComponents = [
+  HomeComponent,
+  PageNotFoundComponent,
+  LoginComponent,
+  RegisterComponent,
+  ProfileComponent
+];

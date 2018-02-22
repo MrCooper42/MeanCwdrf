@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
+import { AuthenticationService, TokenPayload } from '../shared/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',

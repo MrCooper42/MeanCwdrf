@@ -1,6 +1,6 @@
 'use strict';
 
-const User = require('../models/users.js').User;
+const User = require('../models/user.js').User;
 
 const register = (req, res) => {
   console.log("Registering user: " + req.body.email);
@@ -11,6 +11,7 @@ const register = (req, res) => {
 };
 
 const profileRead = (req, res) => {
+  console.log(req, " REQ in profile READ");
   if (!req.payload._id) {
     res.status(401).json({
       "message": "UnauthorizedError: private profile"

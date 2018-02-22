@@ -41,8 +41,9 @@ export class AuthenticationService {
     return this.token;
   }
 
-  private request = (method: 'post' | 'get', type: 'login' | 'register' | 'profile',
-                     user?: TokenPayload): Observable<any> => {
+  // TODO: Add error handling
+  private userRequest = (method: 'post' | 'get', type: 'user/login' | 'user/register' | 'user/profile',
+                         user?: TokenPayload): Observable<any> => {
     let base;
 
     if (method === 'post') {
@@ -89,9 +90,9 @@ export class AuthenticationService {
     }
   }
 
-  public register = (user: TokenPayload): Observable<any> => this.request('post', 'register', user);
+  public register = (user: TokenPayload): Observable<any> => this.userRequest('post', 'user/register', user);
 
-  public login = (user: TokenPayload): Observable<any> => this.request('post', 'login', user);
+  public login = (user: TokenPayload): Observable<any> => this.userRequest('post', 'user/login', user);
 
-  public profile = (): Observable<any> => this.request('get', 'profile');
+  public profile = (): Observable<any> => this.userRequest('get', 'user/profile');
 }

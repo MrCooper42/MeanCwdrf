@@ -15,18 +15,36 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  admin: Boolean,
-  hash: String,
-  salt: String
+  isAdmin: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  hash: {
+    type: String,
+    default: "test"
+  },
+  salt: {
+    type: String,
+    default: "test"
+  }
 });
 
-userSchema.methods.setPassword = (password) => {
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+userSchema.methods.setPassword = (user, password) => {
+  user.salt = crypto.randomBytes(256).toString('hex');
+  user.hash = crypto.pbkdf2Sync(password, user.salt, 1000, 64, 'sha512').toString('hex');
 };
 
-userSchema.methods.validPassword = (password) => {
+userSchema.methods.validPassword = (user, password) => {
+  console.log(password, "ValidPassword errors password");
+  console.log(this.salt, "ValidPassword errors salt");
+  console.log(typeof this.salt, "ValidPassword errors salt type");
   let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+  console.log(hash, "ValidPassword errors hash");
   return this.hash === hash;
 };
 
