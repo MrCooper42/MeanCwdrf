@@ -11,7 +11,7 @@ const register = (req, res) => {
 };
 
 const profileRead = (req, res) => {
-  console.log(req, " REQ in profile READ");
+  console.log(req.payload, " REQ in profile READ");
   if (!req.payload._id) {
     res.status(401).json({
       "message": "UnauthorizedError: private profile"

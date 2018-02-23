@@ -5,7 +5,8 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AuthGuardService } from './shared/authentication/auth-guard.service';
+import { AuthGuardService } from './shared/services/authentication/auth-guard.service';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuardService ] },
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -37,5 +39,6 @@ export const routingComponents = [
   PageNotFoundComponent,
   LoginComponent,
   RegisterComponent,
-  ProfileComponent
+  ProfileComponent,
+  AboutComponent
 ];

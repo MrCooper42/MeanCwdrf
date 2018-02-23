@@ -53,14 +53,13 @@ export class AuthenticationService {
     }
 
     // noinspection TypescriptExplicitMemberType
-    const request = base.pipe(
+    return base.pipe(
       map((data: TokenResponse) => {
         if (data.token) {
           this.saveToken(data.token);
         }
         return data;
       }));
-    return request;
   }
 
   public logout = (): void => {

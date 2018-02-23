@@ -13,13 +13,18 @@ const register = (req, res) => {
   user.setPassword(req.body.password);
   // TODO: check errors and validate form inputs and catching errors in save function
   user.save((err) => {
-    let token;
-    token = user.generateJwt();
-    res.status(200);
-    res.json({
-      "token": token
-    });
-  })
+    if (err) {
+      throw new Error(err);
+    } else {
+      let token;
+      token = user.generateJwt();
+      console.log(token, "token");
+      res.status(200);
+      res.json({
+        "token": token
+      });
+    }
+  }).catch((err) => console.log(err, "catch error in register"));
 };
 
 const login = (req, res) => {
@@ -35,8 +40,9 @@ const login = (req, res) => {
       res.status(200);
       res.json({
         "token": token
-      })
+      });
     } else {
+      console.log(info, "info");
       res.status(401).json(info);
     }
   })(req, res);

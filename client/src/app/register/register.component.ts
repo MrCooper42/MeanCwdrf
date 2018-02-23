@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, TokenPayload } from '../shared/authentication/authentication.service';
+import { AuthenticationService, TokenPayload } from '../shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-register',

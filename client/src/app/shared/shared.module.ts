@@ -2,25 +2,34 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { AuthenticationModule } from './authentication/authentication.module';
-import { AuthenticationService } from './authentication/authentication.service';
-import { AuthGuardService } from './authentication/auth-guard.service';
+import { AuthenticationModule } from './services/authentication/authentication.module';
+import { FooterComponent } from './templates/footer/footer.component';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { AuthGuardService } from './services/authentication/auth-guard.service';
+import { NavbarComponent } from './templates/navbar/navbar.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedRoutingModule,
-    AuthenticationModule
+    AuthenticationModule,
+    NgbModule
   ],
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DropdownDirective
   ],
   providers: [
     AuthenticationService,
     AuthGuardService
+  ],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    DropdownDirective
   ]
 })
 export class SharedModule {

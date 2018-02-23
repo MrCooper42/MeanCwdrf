@@ -14,86 +14,51 @@ const auth = jwt({
 // TODO: Beef this up IF NOT ALLOWED REDIRECT!!! THIS SHOULD ALSO BE
 // TODO: HANDLED THROUGH SERVER AND ANGULAR
 
-router.post('/register', (req, res, next) => {
-
-  // let createUser = () => {
-  let newUser;
+router.post('/register', (req, res) => {
   User.findOne({ 'email': req.body.email }, (err, foundUser) => {
-    let callbackUser = (callBackUser) => callBackUser;
 
     if (err) {
-      console.log(err, "err")
-      foundUser = true;
-      // const reason = next(new Error(err));
+      console.log(err, "err");
+      throw new Error(err);
       // TODO: Handle email error
     }
     if (foundUser) {
-      foundUser = false;
-      // const reason = new Error('User exists already')
       console.log("this user exists HANDLE THIS " + foundUser);
+      throw new Error("User Exists Already");
       // TODO: Handle email already exists
     } else {
+      let newUser;
+
       newUser = new User({
         email: req.body.email,
         name: req.body.name
       });
       newUser.setPassword(newUser, req.body.password);
-      callbackUser(newUser);
+      newUser.save((err, result) => {
+        if (err) {
+          console.log("did something happen????????");
+          return res.status(500).json({
+            title: 'Bad things happened: ',
+            error: err
+          });
+        }
+        console.log(`Result of user created: ${result}`);
+        res.status(201).json({
+          message: 'User created',
+          obj: result
+        });
+      });
     }
   }).then(foundUser => {
-    console.log(foundUser, "newUser")
-
-    if (!foundUser) {
-      console.log("early exit, cannot createUser");
-      return;
-    }
-    foundUser.save((err, result) => {
-      if (err) {
-        console.log("did something happen????????");
-        return res.status(500).json({
-          title: 'Bad things happened: ',
-          error: err
-        });
-      }
-      console.log(`Result of user created: ${result}`);
-      res.status(201).json({
-        message: 'User created',
-        obj: result
-      });
-    });
-  }).catch(
+    console.log(foundUser, "found user in then");
+  }).catch((err) => {
+    console.log(err);
+    throw new Error(err);
     //  TODO: Handle errors
-  )
+  });
 });
 
-
-//     .then((result) => {
-//   if (result) {
-//     newUser = null;
-//     // throw new Error("cannot have duplicate emails.");
-//     return;
-//     console.log(result, "THROW ERROR HERE")
-//   }
-//   if (!result) {
-//     newUser = new User({
-//       email: req.body.email,
-//       name: req.body.name
-//     });
-//     newUser.setPassword(newUser, req.body.password);
-//   }
-// }).catch(err => console.log("err in create user. ====", err));
-// };
-//
-// const saveUser = () => {
-//   let createdUser = createUser();
-//
-
-
-// };
-// saveUser();
-
-
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   User.findOne({
     email: req.body.email
   }, (err, user) => {
@@ -101,25 +66,26 @@ router.post('/login', (req, res, next) => {
       return res.status(500).json({
         title: 'Error in Login',
         error: err
-      })
+      });
     }
-    if (!user || !user.validPassword(req.body.password)) {
+    if (!user || !user.validPassword(user, req.body.password)) {
+      console.log(user.validPassword(user, req.body.password));
       return res.status(500).json({
         title: 'Login failed',
         error: {
           message: 'Invalid login credentials'
         }
-      })
+      });
     }
-    let token = user.generateJwt();
-    console.log(user, "user signed in");
+    let token = user.generateJwt(user);
+    console.log(user.token, "user signed in");
     // TODO: take this console log out
     res.status(200).cookie('token', token).json({
       message: 'Successfully logged in',
       token: token,
       userId: user._id
-    })
-  })
+    });
+  });
 });
 
 router.get('/profile', auth, ctrlProfile.profileRead);

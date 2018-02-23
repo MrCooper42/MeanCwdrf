@@ -8,12 +8,18 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutComponent } from './about/about.component';
+import { PartnersComponent } from './partners/partners.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    AboutComponent,
+    PartnersComponent,
+    NewsComponent,
   ],
   imports: [
     NgbModule.forRoot(),

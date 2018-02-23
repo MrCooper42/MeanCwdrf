@@ -40,24 +40,19 @@ userSchema.methods.setPassword = (user, password) => {
 };
 
 userSchema.methods.validPassword = (user, password) => {
-  console.log(password, "ValidPassword errors password");
-  console.log(this.salt, "ValidPassword errors salt");
-  console.log(typeof this.salt, "ValidPassword errors salt type");
-  let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
-  console.log(hash, "ValidPassword errors hash");
-  return this.hash === hash;
+  let hash = crypto.pbkdf2Sync(password, user.salt, 1000, 64, 'sha512').toString('hex');
+  return user.hash === hash;
 };
 
-userSchema.methods.generateJwt = () => {
+userSchema.methods.generateJwt = (user) => {
   let expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
-
   return jwt.sign({
-    _id: this._id,
-    email: this.email,
-    name: this.name,
+    _id: user._id,
+    email: user.email,
+    name: user.name,
     exp: parseInt(expiry.getTime() / 1000, 10),
-  }, 'My_Secret')
+  }, process.env.JWT_SECRET);
   // TODO: Change this over to a properties file
 };
 
