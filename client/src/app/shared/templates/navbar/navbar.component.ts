@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +10,7 @@ export class NavbarComponent implements OnInit {
   public lgRightOptions: string;
   public smRightOptions: string;
 
-  constructor(public auth: AuthenticationService) {
+  constructor() {
     this.show = true;
     this.lgRightOptions = 'navbar-nav flex-row ml-md-auto d-none d-md-flex';
     this.smRightOptions = 'navbar-nav';

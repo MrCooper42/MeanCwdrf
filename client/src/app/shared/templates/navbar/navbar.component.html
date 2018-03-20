@@ -29,17 +29,11 @@
       </li>
     </ul>
     <ul [ngClass]="getNavSize()">
-      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/register">Register</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Right Link</a>
       </li>
-      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li *ngIf="auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
-      </li>
-      <li *ngIf="auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/logout" (click)="auth.logout()">Logout</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Right Link2</a>
       </li>
     </ul>
   </div>

@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { AuthenticationModule } from './services/authentication/authentication.module';
 import { FooterComponent } from './templates/footer/footer.component';
-import { AuthenticationService } from './services/authentication/authentication.service';
-import { AuthGuardService } from './services/authentication/auth-guard.service';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +11,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    AuthenticationModule,
     NgbModule
   ],
   declarations: [
@@ -23,8 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DropdownDirective
   ],
   providers: [
-    AuthenticationService,
-    AuthGuardService
   ],
   exports: [
     NavbarComponent,
