@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AboutComponent } from './about/about.component';
+import { DonateComponent } from './donate/donate.component'
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'donate', component: DonateComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

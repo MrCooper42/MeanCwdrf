@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './about/about.component';
 import { PartnersComponent } from './partners/partners.component';
 import { NewsComponent } from './news/news.component';
+import { DonateComponent } from './donate/donate.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NewsComponent } from './news/news.component';
     AboutComponent,
     PartnersComponent,
     NewsComponent,
+    DonateComponent,
   ],
   imports: [
     NgbModule.forRoot(),
