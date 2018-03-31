@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Martel:900');
+
+.parallax {
+  /* The image used */
+  background-image: url("../../assets/images/collaboration-friendship-hands-872955.jpg");
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 500px;
+  font-family: 'Martel, serif', serif;
+  text-align: center;
+  color: CaptionText;
+  text-shadow: #FFFFFF 1px 0 10px;
+}
+
+.parallax > .container > h2 {
+  color: rebeccapurple;
+}
+
+.missionStatement {
+  text-align: center;
+  margin: 0;
+  border-right: solid #000000;
+}
+
+.socialMediaPlug {
+  text-align: center;
+  padding: 0 5px 10px;
+  margin: 0;
+}
+
+vr {
+  display: block;
+  width:10px;
+  background-color:#000;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:150px;
+}
