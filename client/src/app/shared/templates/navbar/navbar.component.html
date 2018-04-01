@@ -10,7 +10,7 @@
     <ul class="nav navbar-nav">
       <li>
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Contribute</button>
+          <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Invest in a cure</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button class="dropdown-item">Action - 1</button>
             <button class="dropdown-item">Another Action</button>
@@ -22,9 +22,9 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-dark" id="dropdownBasic2" ngbDropdownToggle>About Us</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item">Action - 1</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
+            <button class="dropdown-item" routerLink="/about">Our Mission</button>
+            <button class="dropdown-item" routerLink="/partners">Our Partners</button>
+            <button class="dropdown-item" routerLink="/team">Our Team</button>
           </div>
         </div>
       </li>
@@ -34,7 +34,10 @@
         <a class="nav-link" routerLink="/donate">Donate</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about">About Us</a>
+        <a class="nav-link" routerLink="/contact">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://www.facebook.com/cwdfoundation/">Connect on Facebook</a>
       </li>
     </ul>
   </div>

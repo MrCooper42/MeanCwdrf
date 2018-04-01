@@ -6,6 +6,7 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaypalComponent } from './modals/paypal/paypal.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    DropdownDirective
+    DropdownDirective,
+    PaypalComponent
   ],
   providers: [
   ],
