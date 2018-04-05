@@ -23,6 +23,7 @@
 .missionStatement {
   text-align: center;
   margin: 0;
+  padding-right: 15px;
   border-right: solid #000000;
 }
 
