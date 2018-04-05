@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+
   <a class="navbar-brand" routerLink="/home">
-    <img id="cwdrfLogo" [src]="CWDRFLogo" alt="Children With Diabetes Research Foundation Logo"> CWD Research Foundation
+    <span id="cwdrfLogo">
+    <img id="cwdrfLogoImg" [src]="CWDRFLogo" alt="Children With Diabetes Research Foundation Logo">
+      CWD Research Foundation
+    </span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -14,11 +18,11 @@
       </li>
       <li>
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Contribute</button>
+          <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Invest in a cure</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item">Action - 1</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
+            <button class="dropdown-item" routerLink="/donate">Ways to donate</button>
+            <button class="dropdown-item" routerLink="/partners">Partner with us</button>
+            <button class="dropdown-item" routerLink="/contact">Contact Us</button>
           </div>
         </div>
       </li>
@@ -26,19 +30,23 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-dark" id="dropdownBasic2" ngbDropdownToggle>About Us</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item">Action - 1</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
+            <button class="dropdown-item" routerLink="/about">Our Mission</button>
+            <button class="dropdown-item" routerLink="/partners">Our Partners</button>
+            <button class="dropdown-item" routerLink="/team">Our Team</button>
           </div>
         </div>
       </li>
     </ul>
     <ul [ngClass]="getNavSize()">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
+        <a class="nav-link" routerLink="/donate" routerLinkActive="active">Donate</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/donate" routerLinkActive="active">Donate</a>
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fbLink" target="_blank" href="https://www.facebook.com/cwdfoundation/">Connect on
+                                                                                                  Facebook</a>
       </li>
     </ul>
   </div>

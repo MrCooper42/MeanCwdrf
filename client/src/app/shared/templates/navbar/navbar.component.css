@@ -1,12 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+
 #cwdrfLogo {
-  height: 80px;
   padding-right: 5px;
+  color: brown;
+  font-family: cursive, sans-serif;
+  font-weight: bold;
 }
 
+#cwdrfLogoImg {
+  height: 80px;
+}
 .mb-4 {
   margin-bottom: 0 !important;
 }
 
 .active {
   color: #FFFFFF;
+}
+
+.nav-link {
+  font-family: 'Raleway', sans-serif;
+}
+
+.fbLink {
+  color: black !important;
+  font-family: 'Raleway', sans-serif;
+  background-color: dodgerblue;
+  border-radius: 15px;
 }

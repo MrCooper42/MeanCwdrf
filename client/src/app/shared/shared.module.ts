@@ -8,7 +8,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [
+  imports:      [
     CommonModule,
     SharedRoutingModule,
     NgbModule
@@ -18,9 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     DropdownDirective
   ],
-  providers: [
-  ],
-  exports: [
+  providers:    [],
+  exports:      [
     NavbarComponent,
     FooterComponent,
     DropdownDirective
